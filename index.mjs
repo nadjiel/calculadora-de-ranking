@@ -5,47 +5,26 @@ const niveis = [
   "Bronze",
   "Prata",
   "Ouro",
-  "Platina",
-  "Ascendente",
-  "Imortal",
-  "Radiante",
+  "Diamante",
+  "Lendário",
+  "Imortal"
 ];
 
 let nome = "";
 let xp = 0;
 let repetir = false;
 
-function traduzirInputBooleano(input) {
-  input = input.toUpperCase();
-
-  switch(input) {
-    case 'S': return true;
-    case 'N': return false;
-    default: return false;
-  }
-}
-
-function classificar(xp) {
-  if(xp <= 1000) return niveis[0];
-  if(xp <= 2000) return niveis[1];
-  if(xp <= 5000) return niveis[2];
-  if(xp <= 7000) return niveis[3];
-  if(xp <= 8000) return niveis[4];
-  if(xp <= 9000) return niveis[5];
-  if(xp <= 10000) return niveis[6];
+function classificar(vitorias, derrotas) {
+  const saldo = vitorias - derrotas;
   
-  return niveis[7];
-}
-
-async function receberInput(msg) {
-  let resposta = await input.question(msg);
-
-  while(!resposta) {
-    console.log("Resposta inválida!");
-    resposta = await input.question(msg);
-  }
-
-  return resposta;
+  if(saldo <= 10) return niveis[0];
+  if(saldo <= 20) return niveis[1];
+  if(saldo <= 50) return niveis[2];
+  if(saldo <= 80) return niveis[3];
+  if(saldo <= 90) return niveis[4];
+  if(saldo <= 100) return niveis[5];
+  
+  return niveis[6];
 }
 
 async function main() {
