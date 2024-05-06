@@ -1,9 +1,4 @@
-import * as readline from "node:readline/promises";
-
-const input = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
+import { receberInput, traduzirInputBooleano, closeInput } from "./input.mjs";
 
 const niveis = [
   "Ferro",
@@ -68,7 +63,7 @@ async function main() {
     console.log("");
   } while(repetir);
 
-  input.close();
+  closeInput();
 };
 
 main();
