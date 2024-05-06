@@ -11,7 +11,8 @@ const niveis = [
 ];
 
 let nome = "";
-let xp = 0;
+let vitorias = 0;
+let derrotas = 0;
 let repetir = false;
 
 function classificar(vitorias, derrotas) {
@@ -30,10 +31,12 @@ function classificar(vitorias, derrotas) {
 async function main() {
   do {
     nome = await receberInput("Qual é o seu nome, herói? 😇 ");
+    vitorias = await receberInput("Quantas vitórias você tem? NÃO MINTA PARA MIM! 👿 ");
+    derrotas = await receberInput("Quantas derrotas você tem? (Eu já sei, só estou testando se você sabe... 🤨) ");
 
-    xp = await receberInput("Quanta experiência você tem? NÃO MINTA PARA MIM! 👿 ");
+    const saldoVitorias = vitorias - derrotas;
 
-    console.log(`O Herói de nome ${nome} está no nível de ${classificar(xp)}`);
+    console.log(`O Herói tem de saldo de ${saldoVitorias} está no nível de ${classificar(vitorias, derrotas)}`);
 
     console.log("");
     repetir = traduzirInputBooleano(
